@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form method="POST" novalidate>
+        <div class=" container form-group mx-auto w-25 mt-lg-4">
+            {{form.hidden_tag()}}
+            {{form.username.label}}
+            <br>
+            {{form.username(placeholder="Enter Username", class="form-control")}}
+            {% for error in form.username.errors %}
+                <div class=" alert alert-warning alert-dismissible show fade">
+                    {{error}}
+                    <button type="button" class="close" data-dismiss="alert">
+                        &times;
+                    </button>
+                </div>
+            {% endfor %}
+            <br>
+            {{form.password.label}}
+            <br>
+            {{form.password(placeholder="Enter Password", class="form-control")}}
+            {% for error in form.password.errors %}
+                <div class=" alert alert-warning alert-dismissible show fade">
+                    {{error}}
+                    <button type="button" class="close" data-dismiss="alert">
+                        &times;
+                    </button>
+                </div>
+            {% endfor %}
+            <br>
+            <div class="form-check">
+                {{form.remember_me(class="form-check-input")}}
+                {{form.remember_me.label}}
+            </div>
+            <br>
+            {{form.login(class="btn  btn-dark")}}
+        </div>
+    </form>
+{% endblock content %}

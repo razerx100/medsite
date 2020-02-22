@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+        <title>
+            {% if title %}
+                {{title}}
+            {% else %}
+                Forgot title
+            {% endif %}
+        </title>
+    </head>
+    <body class="bg-secondary text-white">
+        <nav class="navbar navbar-dark bg-dark text-white">
+            <a href="{{url_for('homepage')}}" class="navbar-brand">Mr. Med</a>
+            <div class=" ml-auto">
+                <a href="{{url_for('login_page')}}" class="text-white">Login</a>
+            </div>
+        </nav>
+        {% block content %}
+        {% endblock content %}
+            <!--JS Scripts-->
+        <script src="{{url_for('static', filename='js/jquery-3.4.1.min.js')}}"></script>
+        <script src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
+    </body>
+</html>
