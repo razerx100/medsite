@@ -6,3 +6,4 @@ class Config:
     SQLALCHEMY_DATABASE_URI = (
         os.environ.get("DATABASE_URL") or "mysql://razerx100:35401350@localhost/meds"
     )
+    SQLALCHEMY_TRACK_MODIFICATIONS = False

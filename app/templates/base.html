@@ -17,7 +17,12 @@
         <nav class="navbar navbar-dark bg-dark text-white">
             <a href="{{url_for('homepage')}}" class="navbar-brand">Mr. Med</a>
             <div class=" ml-auto">
-                <a href="{{url_for('login_page')}}" class="text-white">Login</a>
+                {% if current_user.is_authenticated %}
+                    {{current_user.username}}
+                    <a href="{{url_for('logout_page')}}" class="text-white"> Logout</a>
+                {% else %}
+                    <a href="{{url_for('login_page')}}" class="text-white">Login</a>
+                {% endif %}
             </div>
         </nav>
         {% block content %}
