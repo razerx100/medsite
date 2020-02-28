@@ -37,10 +37,10 @@
             <ul class="list-unstyled components">
                 <p>{{current_user.username}} is online</p>
                 <li>
-                    <a href="#">Dashboard</a>
+                    <a id="dashboard">Dashboard</a>
                 </li>
                 <li>
-                    <a href="#homeSubmenu">Categories</a>
+                    <a id="categories">Categories</a>
                 </li>
                 <li>
                     <a href="#">Manufacturer</a>
@@ -80,7 +80,13 @@
                 </div>
             </nav>
 
-            {% include 'categories.html' %}
+            <div class="dash_stuff">
+                Land Admin
+            </div>
+
+            <div class="cat_stuff">
+                {% include 'categories.html' %}
+            </div>
         </div>
     </div>
 
@@ -88,13 +94,7 @@
     <!-- Bootstrap JS -->
     <script src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
-                $(this).toggleClass('active');
-            });
-        });
-    </script>
+    <script src="{{url_for('static', filename='js/myscripts.js')}}"></script>
+
 </body>
 </html>
