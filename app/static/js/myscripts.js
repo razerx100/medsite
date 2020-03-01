@@ -1,29 +1,27 @@
-let page_ids = ["dashboard" , "categories", "manufacturer", "products", "orders"];
-let page_data_cls = [".dash_stuff", ".cat_stuff", ".manu_stuff", ".prod_stuff", ".order_stuff"];
-
-class Pages{
-    constructor(page_id, page_data_cls){
-        this.id = page_id;
-        this.data_cls = page_data_cls;
+class Link{
+    constructor(id, data_cls){
+        this.id = id;
+        this.data_cls = data_cls;
     }
 }
 
-let objects = new Array(page_ids.length);
+let idss = [["dashboard"] , ["categories"], ["manufacturer"], ["products"], ["orders"], ["add_cat_btn", "add_cat_s_btn"]];
+let data_clss = [".dash_stuff", ".cat_stuff", ".manu_stuff", ".prod_stuff", ".order_stuff", ".add_cat"];
+let links = new Array(idss.length);
 
-$(document).ready(function(){
-    $('#sidebarCollapse').on('click', toggle_sidebar);
-});
-
-$(document).ready(toggle_sidebar);
+//Runs as soon as page finishes loading
 
 $(document).ready(landing_view);
+$(document).ready(link_generator);
 
 $(document).ready(function(){
-    $("#dashboard").click(toggle_page_data);
-    $("#categories").click(toggle_page_data);
-    $("#manufacturer").click(toggle_page_data);
-    $("#products").click(toggle_page_data);
-    $("#orders").click(toggle_page_data);
+    $('#sidebarCollapse').on('click', on_click_toggle);
+    for (ids of idss){
+        for (id of ids){
+            let a_id = "#" + id;
+            $(a_id).on('click', on_click_toggle);
+        }
+    }
 });
 
 function toggle_sidebar(){
@@ -31,31 +29,38 @@ function toggle_sidebar(){
     $(this).toggleClass('active');
 }
 
-function landing_view(){
-    for(i = 0; i < page_ids.length; i+=1){
-        objects[i] = new Pages(page_ids[i], page_data_cls[i]);
+function link_generator(){
+    for(i = 0; i < idss.length; i++){
+        links[i] = new Link(idss[i], data_clss[i]);
     }
-    for(i = 0; i < objects.length; i+=1){
-        if("dashboard" == objects[i].id){
-            $(objects[i].data_cls).show();
-        }
-        else{
-            $(objects[i].data_cls).hide();
+}
+
+function finding_class(current_page){
+    for(i = 0; i < links.length; i++){
+        for(j = 0; j < links[i].id.length; j++){
+            if(links[i].id[j] == current_page){
+                return links[i].data_cls;
+            }
         }
     }
 }
 
-function toggle_page_data(){
-    let current_page = (this.id);
-    for(i = 0; i < page_ids.length; i+=1){
-        objects[i] = new Pages(page_ids[i], page_data_cls[i]);
-    }
-    for(i = 0; i < objects.length; i+=1){
-        if(current_page == objects[i].id){
-            $(objects[i].data_cls).show();
+function toggle_view(data_class){
+    for(i = 0; i < data_clss.length; i++){
+        if(data_clss[i] == data_class){
+            $(data_clss[i]).show();
         }
         else{
-            $(objects[i].data_cls).hide();
+            $(data_clss[i]).hide();
         }
     }
+}
+
+function landing_view(){
+    toggle_view(".dash_stuff");
+}
+
+function on_click_toggle(){
+    let current_page_id = this.id;
+    toggle_view(finding_class(current_page_id));
 }

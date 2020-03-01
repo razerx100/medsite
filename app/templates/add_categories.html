@@ -1,0 +1,50 @@
+<h2>Add Categories</h2>
+<hr>
+<form method="POST" novalidate>
+    <div class="form-group">
+        {{cat_form.hidden_tag()}}
+        {{cat_form.Type.label}}
+        <span> *</span>
+        <br>
+        {{cat_form.Type(class="form-control")}}
+        <br>
+        {{cat_form.title.label}}
+        <span class="text-danger"> *</span>
+        <br>
+        {{cat_form.title(placeholder="Enter Title", class="form-control")}}
+        {% for error in cat_form.title.errors %}
+            <div class=" alert alert-warning alert-dismissible show fade">
+                {{error}}
+                <button type="button" class="close" data-dismiss="alert">
+                    &times;
+                </button>
+            </div>
+        {% endfor %}
+        <br>
+        {{cat_form.parent_cat.label}}
+        <span class="text-danger"> *</span>
+        <br>
+        {{cat_form.parent_cat(class="form-control")}}
+        <br>
+        {{cat_form.description.label}}
+        <br>
+        {{cat_form.description(placeholder="Write a short description", rows="6", class="form-control")}}
+        {% for error in cat_form.description.errors %}
+            <div class="alert alert-warning alert-dismissible show fade">
+                {{error}}
+                <button type="button" class="close" data-dismiss="alert">
+                    &times;
+                </button>
+            </div>
+        {% endfor %}
+        <br>
+        {{cat_form.image.label}}
+        <br>
+        {{cat_form.image(class="form-control-file")}}
+        <br>
+        {{cat_form.status(class="radio-inline")}}
+        {{cat_form.status.label}}
+        <br>
+        {{cat_form.submit(class="cat_add btn btn-primary", id="add_cat_s_btn")}}
+    </div>
+</form>

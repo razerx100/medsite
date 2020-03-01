@@ -1,6 +1,6 @@
 from app import webapp, db
 from flask import render_template, url_for, redirect, flash, request
-from app.forms import LoginForm
+from app.forms import LoginForm, AddCategoriesForm
 from app.models import Admin
 from app.query import Query
 from flask_login import login_required, logout_user, current_user
@@ -16,10 +16,13 @@ def homepage():
     return render_template("homepage.html", title="Mr. Med Home")
 
 
-@webapp.route("/admin")
+@webapp.route("/admin", methods=['POST', 'GET'])
 @login_required
 def admin_page():
-    return render_template("admin_page.html", title="Mr. Med Admin")
+    cat_form = AddCategoriesForm()
+    if cat_form.validate_on_submit():
+        return redirect(url_for('admin_page'))
+    return render_template("admin_page.html", title="Mr. Med Admin", cat_form=cat_form)
 
 
 @webapp.route("/login", methods=["POST", "GET"])
