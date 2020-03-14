@@ -5,13 +5,12 @@ class Link{
     }
 }
 
-let idss = [["dashboard"] , ["categories"], ["manufacturer"], ["products"], ["orders"], ["add_cat_btn", "add_cat_s_btn"]];
+let idss = [["dashboard"] , ["categories"], ["manufacturer"], ["products"], ["orders"], ["add_cat_btn"]];
 let data_clss = [".dash_stuff", ".cat_stuff", ".manu_stuff", ".prod_stuff", ".order_stuff", ".add_cat"];
 let links = new Array(idss.length);
 
 //Runs as soon as page finishes loading
 
-$(document).ready(landing_view);
 $(document).ready(link_generator);
 
 $(document).ready(function(){
@@ -54,10 +53,6 @@ function toggle_view(data_class){
             $(data_clss[i]).hide();
         }
     }
-}
-
-function landing_view(){
-    toggle_view(".dash_stuff");
 }
 
 function on_click_toggle(){

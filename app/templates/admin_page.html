@@ -81,7 +81,7 @@
             </nav>
 
             <div class="dash_stuff">
-                No dash!
+                {% include 'dashboard.html' %}
             </div>
 
             <div class="manu_stuff">
@@ -112,5 +112,12 @@
 
     <script src="{{url_for('static', filename='js/myscripts.js')}}"></script>
 
+    <script>
+        $(document).ready(landing_view);
+        function landing_view(){
+            let landing = '{{landing}}';
+            toggle_view(landing);
+        }
+    </script>
 </body>
 </html>

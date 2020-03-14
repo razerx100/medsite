@@ -10,7 +10,6 @@ from werkzeug.urls import url_parse
 def fav_ico():
     return url_for("static", filename="img/icon/icon.png")
 
-
 @webapp.route("/")
 def homepage():
     return render_template("homepage.html", title="Mr. Med Home")
@@ -20,9 +19,12 @@ def homepage():
 @login_required
 def admin_page():
     cat_form = AddCategoriesForm()
-    if cat_form.validate_on_submit():
-        return redirect(url_for('admin_page'))
-    return render_template("admin_page.html", title="Mr. Med Admin", cat_form=cat_form)
+    if request.method == 'POST':
+        if cat_form.validate():
+            return render_template("admin_page.html", title="Mr. Med Admin", cat_form=cat_form, landing=".cat_stuff")
+        else:
+            return render_template("admin_page.html", title="Mr. Med Admin", cat_form=cat_form, landing=".add_cat")
+    return render_template("admin_page.html", title="Mr. Med Admin", cat_form=cat_form, landing=".dash_stuff")
 
 
 @webapp.route("/login", methods=["POST", "GET"])

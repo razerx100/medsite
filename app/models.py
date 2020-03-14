@@ -21,3 +21,14 @@ class Admin(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
+class Categories(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    Type = db.Column(db.String(128), unique=True, index=True)
+    Title = db.Column(db.String(512), unique=True, index=True)
+    parent_cat = db.Column(db.String(128))
+    description = db.Column(db.String(1024))
+    image = db.Column(db.String(520), unique=True, index=True)
+    status = db.Column(db.String((16)))
+
+    def __repr__(self):
+        return f"<Category {self.Title}>"
