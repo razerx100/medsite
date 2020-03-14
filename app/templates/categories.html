@@ -3,7 +3,7 @@
 <div class="row">
     <div class=" col-11"></div>
     <div class=" col-1">
-        <button type="button" id="add_cat_btn" class="cat_add btn btn-primary float-right">Add</button>
+        <button type="button" id="add_cat_btn" class="btn btn-primary float-right">Add</button>
     </div>
 </div>
 <div class="row mt-3">
@@ -11,39 +11,39 @@
     <div class="col-2">
         <form method="GET" class="form-group form-inline">
             <label for="cat_search" class="ml-auto">Search:</label>&nbsp;
-            <input type="text" id="cat_search" name="Search" class="form-control ml-auto">
+            <input type="text" id="cat_search" name="cat_search" class="form-control ml-auto">
         </form>
     </div>
 </div>
 <table class="table table-striped table-bordered text-white">
     <tr>
-        <th>Cat ID</th>
-        <th>Type</th>
-        <th>Title</th>
-        <th>Parent Category</th>
-        <th>Image</th>
-        <th>Description</th>
-        <th>Status</th>
-        <th>Action</th>
+        <th style="width: 8%;">Cat ID</th>
+        <th style="width: 13%;">Type</th>
+        <th style="width: 13%;">Title</th>
+        <th style="width: 13%;">Parent Category</th>
+        <th style="width: 8%;">Image</th>
+        <th style="width: 29%;">Description</th>
+        <th style="width: 8%;">Status</th>
+        <th style="width: 8%;">Action</th>
     </tr>
     {% if categories %}
         {% for category in categories %}
             <tr>
-                <td>{{category.id}}</td>
-                <td>{{category.type}}</td>
-                <td>{{category.title}}</td>
-                <td>{{category.parent}}</td>
-                <td>
-                    <img src="{{url_for('static', filename=category.image)}}" class=" img-thumbnail">
+                <td style="width: 8%;">{{category.id}}</td>
+                <td style="width: 13%;">{{category.type}}</td>
+                <td style="width: 13%;">{{category.title}}</td>
+                <td style="width: 13%;">{{category.parent_cat}}</td>
+                <td style="width: 8%;">
+                    <img src="{{url_for('static', filename='img/category_img/' + category.image)}}" class="img-responsive" width="40%" height="5%">
                 </td>
-                <td>{{category.description}}</td>
-                <td>{{category.status}}</td>
-                <td>{{category.action}}</td>
+                <td style="width: 29%;">{{category.description}}</td>
+                <td style="width: 8%;">{{category.status}}</td>
+                <td style="width: 8%;">Action</td>
             </tr>
         {% endfor %}
     {% else %}
         <tr>
-            <td>No categories found!</td>
+            <td style="width: 8%;">No categories found!</td>
         </tr>
     {% endif %}
 </table>

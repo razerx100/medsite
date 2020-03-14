@@ -5,8 +5,8 @@ class Link{
     }
 }
 
-let idss = [["dashboard"] , ["categories"], ["manufacturer"], ["products"], ["orders"], ["add_cat_btn"]];
-let data_clss = [".dash_stuff", ".cat_stuff", ".manu_stuff", ".prod_stuff", ".order_stuff", ".add_cat"];
+let idss = [["dashboard"] , ["categories"], ["manufacturer"], ["products"], ["orders"], ["add_cat_btn"], ["add_manu_btn"], ["add_product_btn"]];
+let data_clss = [".dash_stuff", ".cat_stuff", ".manu_stuff", ".prod_stuff", ".order_stuff", ".add_cat", ".add_manu", ".add_product"];
 let links = new Array(idss.length);
 
 //Runs as soon as page finishes loading

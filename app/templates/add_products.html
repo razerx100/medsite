@@ -1,0 +1,48 @@
+<h2>Add Products</h2>
+<hr>
+<form method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        {{forms[2].hidden_tag()}}
+        {{forms[2].title.label}}
+        <span class="text-danger">*</span>
+        <br>
+        {{forms[2].title(class="form-control", placeholder="Write title")}}
+        <br>
+        {{forms[2].category.label}}
+        <span class="text-danger">*</span>
+        <br>
+        {{forms[2].category(class="form-control")}}
+        <br>
+        {{forms[2].manufacturer.label}}
+        <br>
+        {{forms[2].manufacturer(class="form-control")}}
+        <br>
+        {{forms[2].image.label}}
+        <br>
+        {{forms[2].image(class="form-control-file")}}
+        <p class=" text-white">Product is Generic or Not : </p>
+        <div class="pl-4">
+            {{forms[2].generic(class="form-check-input")}}
+            {{forms[2].generic.label}}
+        </div>
+        <br>
+        {{forms[2].status.label}}
+        <br>
+        {% for subfield in forms[2].status %}
+            {{subfield}}
+            {{subfield.label}}&nbsp;
+        {% endfor %}
+        <br>
+        {{forms[2].price.label}}
+        <span class="text-danger">*</span>
+        <br>
+        {{forms[2].price(class="form-control", placeholder="Write the price")}}
+        <br>
+        {{forms[2].unit.label}}
+        <span class="text-danger">*</span>
+        <br>
+        {{forms[2].unit(class="form-control", placeholder="Kg/Bag/Nos/Qty etc")}}
+        <br>
+        {{forms[2].submit(class="btn btn-primary")}}
+    </div>
+</form>

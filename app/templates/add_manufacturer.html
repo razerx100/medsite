@@ -1,0 +1,25 @@
+<h2>Add Manufacturer</h2>
+<hr>
+<form method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        {{forms[1].hidden_tag()}}
+        {{forms[1].name.label}}
+        <span class="text-danger">*</span>
+        <br>
+        {{forms[1].name(placeholder="Enter Manufacturer name", class="form-control")}}
+        {% for error in forms[1].name.errors %}
+            <div class="alert alert-warning alert-dismissible show fade">
+                {{error}}
+                <button type="button" class="close" data-dismiss="alert">
+                    &times;
+                </button>
+            </div>
+        {% endfor %}
+        <br>
+        {{forms[1].image.label}}
+        <br>
+        {{forms[1].image(class="form-control-file")}}
+        <br>
+        {{forms[1].submit(class="btn btn-primary")}}
+    </div>
+</form>

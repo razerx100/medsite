@@ -85,11 +85,11 @@
             </div>
 
             <div class="manu_stuff">
-                No Manufacturer!
+                {% include 'manufacturer.html' %}
             </div>
 
             <div class="prod_stuff">
-                No Products!
+                {% include 'products.html' %}
             </div>
 
             <div class="order_stuff">
@@ -102,6 +102,14 @@
 
             <div class="add_cat">
                 {% include 'add_categories.html' %}
+            </div>
+
+            <div class="add_manu">
+                {% include 'add_manufacturer.html' %}
+            </div>
+
+            <div class="add_product">
+                {% include 'add_products.html' %}
             </div>
         </div>
     </div>
